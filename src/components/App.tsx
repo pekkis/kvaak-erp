@@ -11,6 +11,8 @@ import mlrdLogo from "../assets/favicon.png";
 
 import { mainClass, headingClass, headerClass, logoClass } from "./App.css";
 
+const title = "Kvaak ERP";
+
 const App: FC = () => {
   const [renderCount, setRenderCount] = useState<number>(0);
   // const { ducks, isInitialized, hireDuck, fireDuck, duckIsBeingHired } = useDucks();
@@ -39,18 +41,13 @@ const App: FC = () => {
   return (
     <>
       <Helmet>
-        <title>Mallard ERP</title>
+        <title>{title}</title>
       </Helmet>
       {operationsPending > 0 && <Spinner />}
       <header className={headerClass}>
         <h1 className={headingClass}>
-          <img
-            alt="Mallard ERP"
-            src={mlrdLogo}
-            width="50"
-            className={logoClass}
-          />
-          Mallard ERP
+          <img alt={title} src={mlrdLogo} width="50" className={logoClass} />
+          {title}
         </h1>
       </header>
       <main className={mainClass}>

@@ -2,6 +2,10 @@
 
 A demo app for a PWA presentation, 2022-02.
 
+## Links
+
+- https://realfavicongenerator.net/
+
 ## Howto
 
 ### Develop
