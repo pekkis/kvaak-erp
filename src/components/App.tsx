@@ -53,7 +53,7 @@ const App: FC = () => {
       <main className={mainClass}>
         <p>
           I have been rendered <strong>{renderCount}</strong> times!{" "}
-          <button
+          {/*<button
             type="button"
             onClick={(e) => {
               e.preventDefault();
@@ -61,7 +61,7 @@ const App: FC = () => {
             }}
           >
             cleanse
-          </button>
+          </button>*/}
         </p>
 
         <Outlet />

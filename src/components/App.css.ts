@@ -26,7 +26,7 @@ export const mainClass = style({
 
 export const headerClass = style({
   marginTop: 0,
-  backgroundColor: "rgb(255 277 108)",
+  backgroundColor: "rgb(255 255 0)",
   padding: "1rem",
   position: "sticky",
   top: 0,
