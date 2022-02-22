@@ -13,6 +13,7 @@ import { mainClass, headingClass, headerClass, logoClass } from "./App.css";
 import { app, getMessaging } from "../services/firebase";
 import messagingService from "../services/messaging";
 import { onMessage } from "firebase/messaging";
+import { useRegisterSW } from "virtual:pwa-register/react";
 
 const title = "Kvaak ERP";
 
@@ -23,7 +24,27 @@ const App: FC = () => {
   const getDucks = useStore((state) => state.getDucks);
   const operationsPending = useStore((state) => state.operationsPending);
 
+  const tussi = useRegisterSW({
+    onRegistered: async (registration) => {
+      if (!registration) {
+        return;
+      }
+
+      await navigator.serviceWorker.ready;
+
+      console.log("REGISTRASHUUN", registration);
+      const [token, messaging] = await getMessaging(registration);
+
+      onMessage(messaging, (m) => {
+        console.log("m", m);
+      });
+    }
+  });
+
+  console.log("TUSSI", tussi);
+
   useEffect(() => {
+    /*
     const tusser = async () => {
       console.log(app, "app");
       const [token, messaging] = await getMessaging();
@@ -44,6 +65,7 @@ const App: FC = () => {
     };
 
     tusser();
+    */
   }, []);
 
   useEffect(() => {

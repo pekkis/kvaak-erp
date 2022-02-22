@@ -9,6 +9,13 @@ export default defineConfig({
     react(),
     vanillaExtractPlugin(),
     VitePWA({
+      strategies: "injectManifest",
+      srcDir: "src",
+      filename: "sw.ts",
+      devOptions: {
+        enabled: true
+        /* other options */
+      },
       includeAssets: [
         "favicon-32x32.png",
         "favicon-16x16.png",

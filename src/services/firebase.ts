@@ -6,7 +6,7 @@ import { initializeApp } from "firebase/app";
 import { getMessaging as gM, getToken, Messaging } from "firebase/messaging";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyAi1MPtt4Joghw49BJBOpJN4R4asBC_lH8",
   authDomain: "hardcore-react-training.firebaseapp.com",
   projectId: "hardcore-react-training",
@@ -18,14 +18,17 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
-export const getMessaging = async (): Promise<[string, Messaging]> => {
+export const getMessaging = async (
+  registration: ServiceWorkerRegistration
+): Promise<[string, Messaging]> => {
   // Get registration token. Initially this makes a network call, once retrieved
   // subsequent calls to getToken will return from cache.
   const messaging = gM(app);
 
   try {
     const token = await getToken(messaging, {
-      vapidKey: import.meta.env.VITE_VAPID as string
+      vapidKey: import.meta.env.VITE_VAPID as string,
+      serviceWorkerRegistration: registration
     });
 
     if (!token) {
