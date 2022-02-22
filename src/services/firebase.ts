@@ -25,11 +25,15 @@ export const getMessaging = async (
   // subsequent calls to getToken will return from cache.
   const messaging = gM(app);
 
+  const opts = {
+    vapidKey: import.meta.env.VITE_VAPID as string,
+    serviceWorkerRegistration: registration
+  };
+
+  console.log("OPTS", opts);
+
   try {
-    const token = await getToken(messaging, {
-      vapidKey: import.meta.env.VITE_VAPID as string,
-      serviceWorkerRegistration: registration
-    });
+    const token = await getToken(messaging, opts);
 
     if (!token) {
       console.log(

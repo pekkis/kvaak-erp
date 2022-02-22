@@ -10,8 +10,9 @@ const register = async (token: string) => {
   return ret.data;
 };
 
-const post = async (message: string) => {
+const post = async (title: string, message: string) => {
   const ret = await axios.post(`${import.meta.env.VITE_API}/send`, {
+    title,
     message
   });
 

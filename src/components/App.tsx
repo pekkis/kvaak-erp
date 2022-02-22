@@ -35,6 +35,8 @@ const App: FC = () => {
       console.log("REGISTRASHUUN", registration);
       const [token, messaging] = await getMessaging(registration);
 
+      await messagingService.register(token);
+
       onMessage(messaging, (m) => {
         console.log("m", m);
       });

@@ -9,10 +9,11 @@ const SendMessagePage: FC = () => {
     <section>
       <Formik
         initialValues={{
+          title: "",
           message: ""
         }}
         onSubmit={async (values) => {
-          const ret = await messagingService.post(values.message);
+          const ret = await messagingService.post(values.title, values.message);
 
           console.log(ret, "RETURN OF TEH KING");
         }}
@@ -20,6 +21,13 @@ const SendMessagePage: FC = () => {
         {({ isValid }) => {
           return (
             <Form>
+              <div className={styles.group}>
+                <label className={styles.label} htmlFor="title">
+                  Title
+                </label>
+                <Field id="title" name="title" />
+              </div>
+
               <div className={styles.group}>
                 <label className={styles.label} htmlFor="message">
                   Message
