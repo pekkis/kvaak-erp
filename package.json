@@ -55,6 +55,7 @@
     "clsx": "^1.1.1",
     "emotion-normalize": "11.0.1",
     "emotion-theming": "11.0.0",
+    "firebase": "^9.6.7",
     "formik": "^2.2.9",
     "framer-motion": "^6.2.6",
     "immer": "^9.0.12",

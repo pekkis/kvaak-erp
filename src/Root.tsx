@@ -5,6 +5,7 @@ import { ErrorBoundary } from "react-error-boundary";
 
 const IndexPage = lazy(() => import("./components/IndexPage"));
 const DuckPage = lazy(() => import("./components/DuckPage"));
+const SendMessagePage = lazy(() => import("./components/SendMessagePage"));
 
 // import IndexPage from "./components/IndexPage";
 // import DuckPage from "./components/DuckPage";
@@ -35,6 +36,14 @@ const Root: FC = () => {
                 element={
                   <LazyLoader>
                     <DuckPage />
+                  </LazyLoader>
+                }
+              />
+              <Route
+                path="/message"
+                element={
+                  <LazyLoader>
+                    <SendMessagePage />
                   </LazyLoader>
                 }
               />

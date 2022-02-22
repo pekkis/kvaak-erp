@@ -10,6 +10,9 @@ import { Outlet } from "react-router";
 import mlrdLogo from "../assets/favicon.png";
 
 import { mainClass, headingClass, headerClass, logoClass } from "./App.css";
+import { app, getMessaging } from "../services/firebase";
+import messagingService from "../services/messaging";
+import { onMessage } from "firebase/messaging";
 
 const title = "Kvaak ERP";
 
@@ -19,6 +22,29 @@ const App: FC = () => {
 
   const getDucks = useStore((state) => state.getDucks);
   const operationsPending = useStore((state) => state.operationsPending);
+
+  useEffect(() => {
+    const tusser = async () => {
+      console.log(app, "app");
+      const [token, messaging] = await getMessaging();
+
+      if (!token) {
+        return;
+      }
+
+      const ret = await messagingService.register(token);
+
+      console.log(ret, "RET");
+
+      console.log("TOUKKA TOKEN", token);
+
+      onMessage(messaging, (message) => {
+        console.log("MESSAGE", message);
+      });
+    };
+
+    tusser();
+  }, []);
 
   useEffect(() => {
     getDucks();
@@ -53,15 +79,17 @@ const App: FC = () => {
       <main className={mainClass}>
         <p>
           I have been rendered <strong>{renderCount}</strong> times!{" "}
-          {/*<button
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              cleanse();
-            }}
-          >
-            cleanse
-          </button>*/}
+          {
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                cleanse();
+              }}
+            >
+              cleanse
+            </button>
+          }
         </p>
 
         <Outlet />
