@@ -7,6 +7,7 @@ const IndexPage = lazy(() => import("./components/IndexPage"));
 const DuckPage = lazy(() => import("./components/DuckPage"));
 const SendMessagePage = lazy(() => import("./components/SendMessagePage"));
 const ApisPage = lazy(() => import("./components/ApisPage"));
+const CameraPage = lazy(() => import("./components/CameraPage"));
 
 // import IndexPage from "./components/IndexPage";
 // import DuckPage from "./components/DuckPage";
@@ -53,6 +54,14 @@ const Root: FC = () => {
                 element={
                   <LazyLoader>
                     <ApisPage />
+                  </LazyLoader>
+                }
+              />
+              <Route
+                path="/camera"
+                element={
+                  <LazyLoader>
+                    <CameraPage />
                   </LazyLoader>
                 }
               />

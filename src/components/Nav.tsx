@@ -15,6 +15,9 @@ const Nav: FC = () => {
         <li>
           <Link to="/message">messaging</Link>
         </li>
+        <li>
+          <Link to="/camera">camera</Link>
+        </li>
       </ul>
     </nav>
   );
