@@ -11,7 +11,13 @@ globalStyle("html", {
 
 globalStyle("body", {
   margin: 0,
-  padding: 0
+  padding: 0,
+  fontFamily: "marigny",
+  fontWeight: 400
+});
+
+globalStyle("strong", {
+  fontWeight: 700
 });
 
 globalStyle("h2", {
