@@ -4,26 +4,40 @@ const GeoLocationExample: FC = () => {
   const [geo, setGeo] = useState<GeolocationCoordinates | undefined>(undefined);
 
   useEffect(() => {
-    const tusser = async () => {
-      const g = navigator.geolocation;
+    const g = navigator.geolocation;
 
-      g.watchPosition(
-        (p) => {
-          console.log("P", p);
-          setGeo(p.coords);
-        },
-        (e) => {
-          console.log(e, "e");
-        }
-      );
+    console.log("G", g);
+
+    const wid = g.watchPosition(
+      (p) => {
+        console.log("P", p);
+        setGeo(p.coords);
+      },
+      (e) => {
+        console.log(e, "e");
+      }
+    );
+
+    g.getCurrentPosition(
+      (p) => {
+        console.log("xoox xoox", p);
+      },
+      (e) => {
+        console.log("ERRO FATAL");
+      }
+    );
+
+    console.log("wid", wid);
+
+    return () => {
+      console.log("HELEI HELEI");
+      g.clearWatch(wid);
     };
-
-    tusser();
   }, []);
 
   return (
     <section>
-      <h2>Geolocation</h2>
+      <h2>Geolocation API</h2>
 
       {!geo && <p>No geolocation available...</p>}
 
