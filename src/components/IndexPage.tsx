@@ -1,11 +1,28 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { DuckType } from "../services/duck";
 import useStore from "../services/store";
 import DuckList from "./DuckList";
 import HireDuckForm from "./HireDuckForm";
 import Helmet from "react-helmet";
+import { cleanse } from "../services/instance";
 
 const IndexPage: FC = () => {
+  const [renderCount, setRenderCount] = useState<number>(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRenderCount((renderCount) => {
+        // console.log("Time to update counter!", renderCount);
+        return renderCount + 1;
+      });
+    }, 1000);
+
+    return () => {
+      console.log("I am cleaning up");
+      clearInterval(interval);
+    };
+  }, []);
+
   const ducks = useStore((state) => state.ducks);
   const fireDuck = useStore((state) => state.fireDuck);
   const isInitialized = useStore((state) => state.isInitialized);
@@ -28,6 +45,21 @@ const IndexPage: FC = () => {
       <Helmet>
         <title>Duck List - Mallard ERP</title>
       </Helmet>
+
+      <p>
+        I have been rendered <strong>{renderCount}</strong> times!{" "}
+        {
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              cleanse();
+            }}
+          >
+            cleanse
+          </button>
+        }
+      </p>
 
       <HireDuckForm hireDuck={hireDuck} duckIsBeingHired={duckIsBeingHired} />
 

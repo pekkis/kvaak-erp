@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 
 // import styles from "./App.module.css";
-import { cleanse } from "../services/instance";
 // import useDucks from "../hooks/useDucks";
 import useStore from "../services/store";
 import Spinner from "./Spinner";
@@ -10,17 +9,15 @@ import { Outlet } from "react-router";
 import mlrdLogo from "../assets/favicon.png";
 
 import { mainClass, headingClass, headerClass, logoClass } from "./App.css";
-import { app, getMessaging } from "../services/firebase";
+import { getMessaging } from "../services/firebase";
 import messagingService from "../services/messaging";
 import { onMessage } from "firebase/messaging";
 import { useRegisterSW } from "virtual:pwa-register/react";
+import Nav from "./Nav";
 
 const title = "Kvaak ERP";
 
 const App: FC = () => {
-  const [renderCount, setRenderCount] = useState<number>(0);
-  // const { ducks, isInitialized, hireDuck, fireDuck, duckIsBeingHired } = useDucks();
-
   const getDucks = useStore((state) => state.getDucks);
   const operationsPending = useStore((state) => state.operationsPending);
 
@@ -74,20 +71,6 @@ const App: FC = () => {
     getDucks();
   }, [getDucks]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRenderCount((renderCount) => {
-        // console.log("Time to update counter!", renderCount);
-        return renderCount + 1;
-      });
-    }, 1000);
-
-    return () => {
-      console.log("I am cleaning up");
-      clearInterval(interval);
-    };
-  }, []);
-
   return (
     <>
       <Helmet>
@@ -101,21 +84,7 @@ const App: FC = () => {
         </h1>
       </header>
       <main className={mainClass}>
-        <p>
-          I have been rendered <strong>{renderCount}</strong> times!{" "}
-          {
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                cleanse();
-              }}
-            >
-              cleanse
-            </button>
-          }
-        </p>
-
+        <Nav />
         <Outlet />
       </main>
     </>
