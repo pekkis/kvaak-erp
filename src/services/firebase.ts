@@ -7,7 +7,7 @@ import { getMessaging as gM, getToken, Messaging } from "firebase/messaging";
 
 // Your web app's Firebase configuration
 export const firebaseConfig = {
-  apiKey: "AIzaSyAi1MPtt4Joghw49BJBOpJN4R4asBC_lH8",
+  apiKey: import.meta.env.VITE_FIREBASE_APIKEY as string,
   authDomain: "hardcore-react-training.firebaseapp.com",
   projectId: "hardcore-react-training",
   storageBucket: "hardcore-react-training.appspot.com",
