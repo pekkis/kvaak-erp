@@ -7,17 +7,26 @@ const shareable: ShareData = {
   text: "There are lots of interdasting APIs in the browser. Here you can see a couple of them!"
 };
 
+const canShare = (shareable: ShareData) => {
+  if (!navigator.canShare) {
+    return false;
+  }
+
+  return navigator.canShare(shareable);
+};
+
 const ShareApiExample: FC = () => {
   const [shared, setShared] = useState<boolean>(false);
 
-  const canShare = navigator.canShare(shareable);
+  const isShareable = canShare(shareable);
 
   return (
     <section>
       <h2>Share API</h2>
 
       <p>
-        Navigator is able to share?: <strong>{canShare ? "YES" : "NO"}</strong>
+        Navigator is able to share?:{" "}
+        <strong>{isShareable ? "YES" : "NO"}</strong>
       </p>
 
       <p>
