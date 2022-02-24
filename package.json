@@ -51,6 +51,7 @@
     "@theme-ui/css": "^0.13.1",
     "@theme-ui/presets": "^0.13.1",
     "@types/react-speech-recognition": "^3.9.0",
+    "@types/w3c-generic-sensor": "^1.0.5",
     "@types/wicg-file-system-access": "^2020.9.5",
     "@vanilla-extract/css": "^1.6.8",
     "axios": "^0.26.0",

@@ -15,7 +15,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["node", "vite/client", "jest", "wicg-file-system-access"],
+    "types": [
+      "node",
+      "vite/client",
+      "jest",
+      "wicg-file-system-access",
+      "w3c-generic-sensor"
+    ],
     "experimentalDecorators": true
   },
   "include": ["./typings", "./src"]

@@ -6,6 +6,7 @@ import EyedropperApiExample from "./EyedropperApiExample";
 import FileSystemAccessApiExample from "./FileSystemAccessApiExample";
 import GeoLocationExample from "./GeolocationExample";
 import NetworkApiExample from "./NetworkApiExample";
+import SensorsApiExample from "./SensorsApiExample";
 import ShareApiExample from "./ShareApiExample";
 import SpeechApiExample from "./SpeechApiExample";
 import VibrationApiExample from "./VibrationApiExample";
@@ -34,6 +35,8 @@ const ApisPage: FC = () => {
       <SpeechApiExample />
 
       <FileSystemAccessApiExample />
+
+      <SensorsApiExample />
     </>
   );
 };
