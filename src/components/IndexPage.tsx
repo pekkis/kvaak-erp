@@ -48,7 +48,7 @@ const IndexPage: FC = () => {
 
       <p>
         I have been rendered <strong>{renderCount}</strong> times!{" "}
-        {
+        {/*
           <button
             type="button"
             onClick={(e) => {
@@ -58,7 +58,7 @@ const IndexPage: FC = () => {
           >
             cleanse
           </button>
-        }
+          */}
       </p>
 
       <HireDuckForm hireDuck={hireDuck} duckIsBeingHired={duckIsBeingHired} />
