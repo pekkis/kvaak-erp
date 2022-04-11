@@ -8,7 +8,13 @@ import Helmet from "react-helmet";
 import { Outlet } from "react-router";
 import mlrdLogo from "../assets/favicon.png";
 
-import { mainClass, headingClass, headerClass, logoClass } from "./App.css";
+import {
+  mainClass,
+  headingClass,
+  headerClass,
+  logoClass,
+  containerClass
+} from "./App.css";
 import { getMessaging } from "../services/firebase";
 import messagingService from "../services/messaging";
 import { onMessage } from "firebase/messaging";
@@ -84,8 +90,10 @@ const App: FC = () => {
         </h1>
       </header>
       <main className={mainClass}>
-        <Nav />
-        <Outlet />
+        <div className={containerClass}>
+          <Nav />
+          <Outlet />
+        </div>
       </main>
     </>
   );

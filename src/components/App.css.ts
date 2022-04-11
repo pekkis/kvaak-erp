@@ -50,3 +50,8 @@ export const logoClass = style({
   marginRight: "0.33em",
   verticalAlign: "middle"
 });
+
+export const containerClass = style({
+  maxWidth: "640px",
+  margin: "0 auto"
+});

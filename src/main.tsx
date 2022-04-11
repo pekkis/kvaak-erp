@@ -1,19 +1,14 @@
+// One of the stupid libraries needs this!
 import "regenerator-runtime/runtime";
-import React from "react";
-import ReactDOM from "react-dom";
+
+import { createRoot } from "react-dom/client";
 import Root from "./Root";
 
 import "normalize.css";
 
 async function render(Component: typeof Root, rootElement: HTMLElement) {
-  console.log("in vite, meta stuff is in import.meta", import.meta.env);
-
-  if (import.meta.env.MODE !== "production") {
-    console.log("Initializing dev mode accessibility tooling");
-    const axe = await import("@axe-core/react");
-    axe.default(React, ReactDOM, 1000);
-  }
-  ReactDOM.render(<Component />, rootElement);
+  const root = createRoot(rootElement);
+  root.render(<Component />);
 }
 
 const rootElement = document.getElementById("root");

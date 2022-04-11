@@ -1,4 +1,4 @@
-import { FC, lazy, Suspense } from "react";
+import { FC, lazy, ReactNode, Suspense } from "react";
 import App from "./components/App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
@@ -13,7 +13,11 @@ const CameraPage = lazy(() => import("./components/CameraPage"));
 // import DuckPage from "./components/DuckPage";
 // import Welcome from "./components/welcome/Welcome";
 
-const LazyLoader: FC = ({ children }) => {
+type LazyLoaderProps = {
+  children: ReactNode;
+};
+
+const LazyLoader: FC<LazyLoaderProps> = ({ children }) => {
   return <Suspense fallback={<>...</>}>{children}</Suspense>;
 };
 
